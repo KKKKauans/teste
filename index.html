@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O que a tela faz com o cérebro do seu filho?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--red:#b04848;--red-d:#8e3636;--soft:#f7e3e0;--paper:#f8f6f3;--paper2:#eeeae6;--ink:#2b2b2b;--onred:#fbf3f1;--mute:#5c5c5c;color-scheme:light;
+--head:"Bebas Neue",Impact,"Arial Narrow",sans-serif;--body:"Barlow","Segoe UI",Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.05rem/1.6 var(--body);overflow-x:hidden}
+h1,h2,h3{font-family:var(--head);font-weight:400;line-height:.95;margin:0;letter-spacing:.01em}
+h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+h3{font-size:2rem}
+p{margin:0 0 1em;max-width:62ch}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem}
+.grain{background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px);background-size:5px 5px}
+#bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:4px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:0 50%;z-index:20}
+/* fundo flutuante */
+#bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}
+.hero .wrap{position:relative;z-index:1}
+.fw{position:absolute;left:var(--x);top:var(--y);font:400 var(--fs)/1 var(--head);letter-spacing:.03em;white-space:nowrap;color:rgba(176,72,72,.15);animation:float var(--d) ease-in-out infinite;animation-delay:var(--dl);will-change:transform}
+@keyframes float{0%{transform:translate(0,0) rotate(var(--r0))}33%{transform:translate(var(--dx),calc(var(--dy)*-.6)) rotate(var(--r1))}66%{transform:translate(calc(var(--dx)*-.7),var(--dy)) rotate(var(--r0))}100%{transform:translate(0,0) rotate(var(--r0))}}
+/* hero */
+.hero{min-height:100svh;display:grid;align-content:center;position:relative;overflow:hidden;padding:4rem 0}
+.hero h1{font-size:clamp(3.6rem,13vw,10rem);color:var(--red)}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--n)*.14s)}
+.hero h1 .k{color:var(--ink)}
+@keyframes up{to{transform:none}}
+.hero .sub{margin-top:1.6rem;font-size:1.25rem;max-width:34ch;opacity:0;animation:fade .8s .9s forwards}
+@keyframes fade{to{opacity:1}}
+.cue{margin-top:2rem;display:inline-flex;gap:.6rem;align-items:center;color:var(--red);font-weight:600;text-decoration:none;opacity:0;animation:fade .8s 1.3s forwards}
+.cue b{width:2px;height:38px;background:var(--red);animation:drip 1.6s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.blob{position:absolute;right:-12vw;top:8vh;width:min(60vw,640px);aspect-ratio:1;background:var(--red);opacity:.12;border-radius:46% 54% 60% 40%/50% 40% 60% 50%;animation:morph 14s ease-in-out infinite;will-change:transform}
+@keyframes morph{50%{border-radius:60% 40% 38% 62%/42% 60% 40% 58%;transform:rotate(25deg) scale(1.08)}}
+/* torn edge */
+.tear{height:46px;background:var(--soft);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 46' preserveAspectRatio='none'%3E%3Cpath d='M0 0h1200v18l-40 8-50-10-60 12-70-8-60 14-80-12-70 10-90-14-60 12-80-8-70 14-90-12-80 10-60-14-70 12-70-6z'/%3E%3C/svg%3E") center/100% 100%;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 46' preserveAspectRatio='none'%3E%3Cpath d='M0 0h1200v18l-40 8-50-10-60 12-70-8-60 14-80-12-70 10-90-14-60 12-80-8-70 14-90-12-80 10-60-14-70 12-70-6z'/%3E%3C/svg%3E") center/100% 100%}
+.tear.flip{transform:scaleY(-1)}
+/* sections */
+section{padding:5rem 0}
+.red{background:rgba(247,227,224,.8);color:var(--ink)}
+.red h2{color:var(--red)}
+.red h3{color:var(--red-d)}
+.lead{font-size:1.2rem;margin-top:1.2rem}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2rem 1.5rem;margin-top:3rem}
+.stat b{color:var(--red);display:block;font:400 clamp(3.4rem,8vw,5.6rem)/1 var(--head)}
+.stat span{display:block;max-width:24ch;font-size:.98rem;opacity:.92}
+.stat small{display:block;margin-top:.3rem;font-size:.8rem;opacity:.7}
+/* risks */
+.risks{display:grid;gap:1.1rem;margin-top:2.6rem}
+.risk{background:var(--paper2);border-left:8px solid var(--red);border-radius:4px;padding:0;overflow:hidden}
+.risk button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 1.4rem;font:400 clamp(1.7rem,4vw,2.4rem)/1 var(--head)}
+.risk button:focus-visible{outline:3px solid var(--red);outline-offset:-3px}
+.risk button::after{content:"+";font:400 2.4rem/1 var(--head);color:var(--red);transition:transform .4s}
+.risk[data-open="true"] button::after{transform:rotate(135deg)}
+.risk .panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.risk[data-open="true"] .panel{grid-template-rows:1fr}
+.risk .panel>div{overflow:hidden}
+.risk .panel p{padding:0 1.4rem;color:var(--ink)}
+.risk .panel p:last-child{padding-bottom:1.3rem}
+/* news */
+.news{display:grid;gap:2rem;margin-top:2.5rem}
+@media(min-width:820px){.news{grid-template-columns:1.1fr .9fr}}
+.clip{background:#fbfaf8;color:#2b2b2b;padding:1.8rem;transform:rotate(-1.6deg);box-shadow:0 18px 40px rgba(0,0,0,.28);border-radius:4px;transition:transform .5s}
+.clip:hover{transform:rotate(0)}
+.clip h3{color:var(--red-d);font-size:2.1rem}
+.clip .d{font-size:.85rem;color:#5c5c5c}
+.lessons{display:grid;gap:.9rem;align-content:center}
+.lessons div{border-top:2px solid rgba(142,54,54,.35);padding-top:.7rem}
+/* sbp */
+.rows{margin-top:2.6rem;display:grid;gap:1.5rem}
+.row{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;align-items:center}
+.row strong{font:400 1.7rem/1 var(--head)}
+.track{height:2.6rem;background:var(--paper2);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--red);color:var(--onred);display:flex;align-items:center;padding-left:.8rem;font:400 1.5rem/1 var(--head);white-space:nowrap;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.fill.zero{background:none;color:var(--red)}
+.row.in .fill{width:var(--w)}
+.row.in .fill.zero{width:100%}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+/* marquee */
+.marq{overflow:hidden;background:var(--soft);color:var(--red-d);border-block:2px solid var(--red);padding:1.1rem 0;white-space:nowrap}
+.marq div{display:inline-block;animation:slide 60s linear infinite;font:400 1.9rem/1 var(--head)}
+.marq:hover div{animation-play-state:paused}
+.marq span{margin:0 1.4rem}.marq span::after{content:"/";margin-left:2.8rem;color:var(--red)}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* tips */
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem;margin-top:2.4rem}
+.tip{background:rgba(248,246,243,.85);padding:1.4rem;border:2px solid rgba(176,72,72,.45);border-radius:4px;transition:transform .35s,background .35s,color .35s}
+.tip:hover{transform:translateY(-6px);background:var(--soft);border-color:var(--red)}
+.tip p{margin:.5rem 0 0}
+/* cta */
+.cta{text-align:center}
+.cta p{margin-inline:auto}
+.btn{display:inline-block;margin:1rem .4rem 0;background:var(--red);color:#fff;border:2px solid var(--red);cursor:pointer;padding:1rem 2rem;border-radius:3px;font:400 1.8rem/1 var(--head);text-decoration:none;transition:transform .3s,box-shadow .3s}
+.btn.ghost{background:transparent;color:var(--red-d)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 0 rgba(142,54,54,.25)}
+.btn:focus-visible{outline:3px solid var(--red-d);outline-offset:3px}
+footer{padding:2.4rem 0;font-size:.95rem;color:var(--mute);text-align:center}
+footer b{font:400 1.5rem/1 var(--head);color:var(--ink);display:block;margin-bottom:.3rem}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}
+.rv,.hero h1 span i,.hero .sub,.cue{opacity:1;transform:none}.fill{width:var(--w)}.fill.zero{width:100%}html{scroll-behavior:auto}}
+</style>
+</head>
+<body class="grain">
+<div id="bar"></div>
+
+<header class="hero">
+<div id="bg" aria-hidden="true"></div>
+<div class="blob" aria-hidden="true"></div>
+<div class="wrap">
+<h1><span style="--n:0"><i>O que a tela</i></span><span style="--n:1"><i class="k">faz com o cérebro</i></span><span style="--n:2"><i>do seu filho?</i></span></h1>
+<p class="sub">A terra sem lei da internet não escolhe idade. Entenda os riscos e saiba o que fazer.</p>
+<a class="cue" href="#numeros"><b></b>Role para ver</a>
+</div>
+</header>
+
+<div class="tear flip" aria-hidden="true" style="margin-bottom:-1px"></div>
+<section id="numeros" class="red" style="padding-top:3rem">
+<div class="wrap">
+<h2 class="rv">Os números já estão dentro de casa</h2>
+<p class="lead rv">Dados de pesquisas citadas no trabalho de extensão. Cada fonte aparece abaixo do número.</p>
+<div class="stats">
+<div class="stat rv"><b data-n="92" data-s="%">0</b><span>das crianças e adolescentes de 9 a 17 anos usam a internet</span><small>TIC Kids Online Brasil 2025, Cetic.br</small></div>
+<div class="stat rv"><b data-n="96" data-s="%">0</b><span>desses jovens acessam pelo celular</span><small>TIC Kids Online Brasil 2025, Cetic.br</small></div>
+<div class="stat rv"><b data-n="29" data-s="%">0</b><span>já passaram por situações incômodas ou ofensivas online</span><small>TIC Kids Online Brasil 2024, via Senado Federal</small></div>
+<div class="stat rv"><b data-n="32" data-s="%">0</b><span>dos pais relatam compras feitas pelos filhos sem consentimento</span><small>Serasa e Opinion Box, 2026</small></div>
+<div class="stat rv"><b data-n="72" data-s="%">0</b><span>das crianças avaliadas tiveram aumento da depressão associado ao uso de telas</span><small>Estudo da Faculdade de Medicina da UFMG</small></div>
+</div>
+</div>
+</section>
+<div class="tear" aria-hidden="true" style="margin-top:-1px"></div>
+
+<section id="riscos">
+<div class="wrap">
+<h2 class="rv">Cinco riscos que os pais precisam conhecer</h2>
+<p class="lead rv">Toque em cada risco para abrir.</p>
+<div class="risks">
+<div class="risk rv" data-open="false"><button aria-expanded="false">Aliciamento e pedofilia</button><div class="panel"><div>
+<p>Pessoas mal-intencionadas criam perfis falsos em redes sociais, mensagens e jogos online para se passar por crianças. Ganham a confiança da vítima, estabelecem contato e praticam abusos.</p>
+<p>A falta de supervisão e de orientação sobre os riscos digitais aumenta a vulnerabilidade das crianças.</p></div></div></div>
+<div class="risk rv" data-open="false"><button aria-expanded="false">Conteúdo inadequado para a idade</button><div class="panel"><div>
+<p>Em TikTok, Instagram, YouTube e jogos, a criança pode encontrar violência, pornografia, desafios perigosos e conteúdos que incentivam a adultização, mesmo sem procurar por eles.</p>
+<p>Sem acompanhamento, ela pode normalizar esses comportamentos ou reproduzi-los.</p></div></div></div>
+<div class="risk rv" data-open="false"><button aria-expanded="false">Dependência de dopamina</button><div class="panel"><div>
+<p>Notificações, feed infinito e algoritmos mantêm a atenção presa e criam um ciclo de recompensa. Com o uso excessivo, atividades mais lentas, como estudar, ler ou brincar sem tela, passam a parecer sem graça.</p>
+<p>Um estudo com 2.441 crianças (Madigan et al., JAMA Pediatrics, 2019) associou mais tempo de tela aos 24 e 36 meses a pior desempenho em testes de desenvolvimento depois.</p></div></div></div>
+<div class="risk rv" data-open="false"><button aria-expanded="false">Riscos financeiros</button><div class="panel"><div>
+<p>Sem uma barreira digital, a criança gasta em jogos, redes sociais e quase tudo na internet. Segundo o Serasa, 53% dos responsáveis acreditam que o conteúdo digital aumenta diretamente o desejo de compra dos filhos.</p>
+<p>O risco vai além do gasto indevido: é formar um hábito de consumo descontrolado.</p></div></div></div>
+<div class="risk rv" data-open="false"><button aria-expanded="false">Formação cognitiva deficiente</button><div class="panel"><div>
+<p>O uso excessivo de telas pode atrasar a fala e o desenvolvimento cognitivo, reduzir a atenção e a capacidade de concentração e diminuir a interação com cuidadores.</p>
+<p>Também está associado a sedentarismo, obesidade, miopia e fadiga visual.</p></div></div></div>
+</div>
+</div>
+</section>
+
+<div class="tear flip" aria-hidden="true" style="margin-bottom:-1px"></div>
+<section id="caso" class="red" style="padding-top:3rem">
+<div class="wrap">
+<h2 class="rv">Um caso real e como ele foi descoberto</h2>
+<div class="news">
+<article class="clip rv">
+<p class="d">Notícia de 22/01/2026, Polícia Civil da Bahia</p>
+<h3>Homem que usava perfis falsos para aliciar crianças em jogos online é preso</h3>
+<p>Um homem de 22 anos foi preso em Catu (BA) na Operação Brilho do Amanhã. Segundo as investigações, ele se passava por criança em jogos voltados ao público infantil para criar vínculo e depois extorquir as vítimas.</p>
+<p>O caso começou no Rio Grande do Norte, quando a mãe de uma criança de 10 anos viu conversas e ameaças no celular da filha e registrou a ocorrência.</p>
+</article>
+<div class="lessons rv">
+<div><h3>Jogo infantil também é rede social</h3><p>Jogos online têm chat e contato com desconhecidos.</p></div>
+<div><h3>A mãe percebeu a tempo</h3><p>Olhar o aparelho e conversar foi o que iniciou a investigação.</p></div>
+<div><h3>Denunciar funciona</h3><p>O registro da ocorrência levou à identificação do investigado.</p></div>
+</div>
+</div>
+</div>
+</section>
+<div class="tear" aria-hidden="true" style="margin-top:-1px"></div>
+
+<section id="limites">
+<div class="wrap">
+<h2 class="rv">Quanto tempo de tela é seguro?</h2>
+<p class="lead rv">A Sociedade Brasileira de Pediatria (SBP) define limites. São recomendações de uma entidade médica, não sugestões de conveniência.</p>
+<div class="rows">
+<div class="row"><strong>Até 2 anos</strong><div class="track"><div class="fill zero">Nenhuma tela</div></div></div>
+<div class="row"><strong>2 a 5 anos</strong><div class="track"><div class="fill" style="--w:50%">No máximo 1 hora por dia</div></div></div>
+<div class="row"><strong>Acima de 6 anos</strong><div class="track"><div class="fill" style="--w:100%">No máximo 2 horas por dia</div></div></div>
+</div>
+</div>
+</section>
+
+
+<section id="agir">
+<div class="wrap">
+<h2 class="rv">O que fazer a partir de hoje</h2>
+<div class="tips">
+<div class="tip rv"><h3>Acompanhe</h3><p>Saiba o que seu filho assiste, joga e com quem fala.</p></div>
+<div class="tip rv"><h3>Use proteções</h3><p>Ative o controle parental e bloqueie compras sem senha.</p></div>
+<div class="tip rv"><h3>Converse</h3><p>Pergunte o que ele encontra na internet, sem julgar.</p></div>
+<div class="tip rv"><h3>Respeite os limites</h3><p>Siga os tempos de tela recomendados pela SBP.</p></div>
+</div>
+</div>
+</section>
+
+<div class="tear flip" aria-hidden="true" style="margin-bottom:-1px"></div>
+<section id="proteger" class="red cta" style="padding-top:3rem">
+<div class="wrap">
+<h2 class="rv">Proteger começa em casa</h2>
+<p class="lead rv">Compartilhe esta página com outros pais, professores e cuidadores. Se suspeitar de aliciamento ou abuso de uma criança, ligue para o Disque 100, serviço gratuito do Governo Federal para denúncias de violações de direitos humanos.</p>
+<div class="rv"><button class="btn" id="shareBtn" type="button">Compartilhar esta página</button><a class="btn ghost" href="tel:100">Ligar para o Disque 100</a></div>
+</div>
+</section>
+
+<footer>
+<div class="wrap"><b>UNESPAR, Campus de União da Vitória</b>Sistemas de Informação, Extensão 1, 2026</div>
+</footer>
+
+<script>
+(function(){
+var bar=document.getElementById('bar');
+function prog(){var h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'}
+addEventListener('scroll',prog,{passive:true});prog();
+var items=["Formação cognitiva deficiente","Aliciamento e pedofilia","Dependência dopaminérgica","Gastos compulsivos","Pornografia precoce","Cyberbullying","Ansiedade e depressão","Distúrbios do sono","Exposição à violência","Perda da autonomia","Adultização precoce","Golpes e fraudes","Isolamento social","Baixa tolerância à frustração","Dificuldade de concentração","Sedentarismo e obesidade","Prejuízo ao rendimento escolar","Violação de privacidade"];
+var bg=document.getElementById('bg'),seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+var cols=innerWidth<700?3:6,rows=7,n=0;
+for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){var w=document.createElement('span');w.className='fw';w.textContent=items[(n++*5)%items.length];
+w.style.cssText='--x:'+((c+rnd()*.7)/cols*100).toFixed(1)+'%;--y:'+((r+rnd()*.8)/rows*100).toFixed(1)+'%;--fs:'+(1.1+rnd()*1.1).toFixed(2)+'rem;--d:'+(14+rnd()*10).toFixed(0)+'s;--dl:-'+(rnd()*24).toFixed(0)+'s;--dx:'+((rnd()-.5)*170).toFixed(0)+'px;--dy:'+((rnd()-.5)*170).toFixed(0)+'px;--r0:'+((rnd()-.5)*12).toFixed(1)+'deg;--r1:'+((rnd()-.5)*12).toFixed(1)+'deg';
+bg.appendChild(w)}
+document.querySelectorAll('.risk button').forEach(function(b){b.addEventListener('click',function(){
+var r=b.parentNode,o=r.dataset.open!=='true';r.dataset.open=o;b.setAttribute('aria-expanded',o)})});
+var still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function count(el){var n=+el.dataset.n,s=el.dataset.s||'';if(still){el.textContent=n+s;return}
+var t0=performance.now();(function f(t){var p=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-p,3);el.textContent=Math.round(n*e)+s;if(p<1)requestAnimationFrame(f)})(t0)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;
+e.target.classList.add('in');var c=e.target.querySelector('[data-n]');if(c)count(c);io.unobserve(e.target)})},{threshold:.18});
+document.querySelectorAll('.rv,.row').forEach(function(el,i){el.style.transitionDelay=(el.classList.contains('rv')?(i%4)*70:0)+'ms';io.observe(el)});
+var sb=document.getElementById('shareBtn');sb.addEventListener('click',function(){var u=location.href;
+if(navigator.share){navigator.share({title:document.title,url:u}).catch(function(){})}
+else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){sb.textContent='Link copiado'}).catch(function(){})}});
+})();
+</script>
+</body>
+</html>
